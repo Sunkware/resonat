@@ -1,0 +1,6 @@
+/_kartei
+/_run_
+/.vscode
+/resonat
+/*.o
+/players/*.o
