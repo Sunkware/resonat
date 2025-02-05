@@ -7,7 +7,7 @@ Version 2025.02.05
 
 * Added `reset` target to Makefile, it removes `_run_/`.
 
-* Tiny adjustments.
+* Tiny  adjustments.
 
 
 Version 2024.12.31_1
