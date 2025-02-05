@@ -2,6 +2,7 @@
 #define _PIANIST_HPP
 
 #include "player.hpp"
+#include "scales.hpp"
 
 class Pianist : public Player {
 
@@ -9,7 +10,7 @@ class Pianist : public Player {
     int last_pitch1;
     int last_pitch2;
     int last_pitch3;
-    vector<int> scale;
+    const vector<int>& scale = scales::MINOR_60_2;
 
 public:
 

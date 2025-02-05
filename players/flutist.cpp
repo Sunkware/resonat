@@ -4,7 +4,7 @@ by playing notes through MIDI soft-synth to sound output.
 
 https://github.com/sunkware/resonat
 
-Copyright (c) 2024 Sunkware
+Copyright (c) 2024-2025 Sunkware
 
 https://sunkware.org
 
@@ -24,6 +24,7 @@ along with ReSonat. If not, see <https://www.gnu.org/licenses/>.
 
 #include "flutist.hpp"
 #include "gmtimbres.hpp"
+#include "scales.hpp"
 #include "../soundfonts.hpp"
 
 Flutist::Flutist(fluid_synth_t* synth, const vector<int>& sfids, int& new_channel) {
@@ -31,7 +32,6 @@ Flutist::Flutist(fluid_synth_t* synth, const vector<int>& sfids, int& new_channe
     new_channel++;
     fluid_synth_program_select(synth, this->chan, sfids[SFIDS::SMALL], 0, GMSS::PAN_FLUTE);
     this->last_pitch = -1;
-    this->scale = vector<int>{60, 62, 63, 65, 67, 68, 70, 72,   74, 75, 77, 79, 80, 82, 84}; // Minor
 }
 
 tuple<uint8_t, uint8_t, uint8_t> Flutist::react(fluid_synth_t* synth, const vector<uint8_t>& spectrogram, size_t i_blk, const SpectrumStats& spectrum_stats) {

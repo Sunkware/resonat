@@ -4,7 +4,7 @@ by playing notes through MIDI soft-synth to sound output.
 
 https://github.com/sunkware/resonat
 
-Copyright (c) 2024 Sunkware
+Copyright (c) 2024-2025 Sunkware
 
 https://sunkware.org
 
@@ -35,7 +35,7 @@ int in_callback(const void *input, void *output, unsigned long frameCount, const
 		ctrl->sync_stage = 0;
 	}
 	if (ctrl->sync_stage == 0) {
-		ctrl->echoes->write((int16_t*)input); // updates slice of echoes spectrogram
+		ctrl->echoes->write((int16_t*)input); // updates slice of echoes spectrogram, inter alia
 	}
 	if (statusFlags & paInputOverflow) {
 		fprintf(stderr, "InputOverflow\n");
@@ -48,7 +48,7 @@ int in_callback(const void *input, void *output, unsigned long frameCount, const
 
 int out_callback(const void *input, void *output, unsigned long frameCount, const PaStreamCallbackTimeInfo *timeInfo, PaStreamCallbackFlags statusFlags, void *userData) {
 	auto ctrl = (Controller *)userData;
-	ctrl->ensemble->react_and_read(ctrl->echoes->spectrogram, ctrl->echoes->pos_blk_read, (int16_t*)output); // updates slice of synth spectrogram
+	ctrl->ensemble->react_and_read(ctrl->echoes->spectrogram, ctrl->echoes->pos_blk_read, (int16_t*)output); // updates slice of synth spectrogram, inter alia
 	if (!ctrl->do_synth_out) {
 		memset(output, 0, cfg::BLOCKMEMSIZE);
 	}	

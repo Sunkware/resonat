@@ -67,11 +67,11 @@ $ make run
 
 The window appears, consisting of 3 horizontal stripes, from top to bottom:
 
-1. Echoes spectrogram.
+1. Echoes spectrogram and fading-average momentary spectrum.
 
 2. Ensemble eventogram (few pixels in height, barely noticeable).
 
-3. Synth spectrogram.
+3. Synth spectrogram and momentary spectrum.
 
 In (1), blue line is "playing head" and black line is "recording head". (2) and (3) scroll from right (present) to left (past).
 
@@ -79,7 +79,7 @@ Say something to mic, produce knocking and hissing sounds etc. to "seed" the pro
 
 Listen… … …
 
-Press `Q` to quit. Or other keys to toggle some switches, e.g. `R` pauses rendering and halves CPU usage, low as it is though.
+Press `Q` to quit. Or other keys to toggle some switches, e.g. `R` pauses rendering and halves CPU usage, low as it is though (~15%).
 
 ## Windows?
 

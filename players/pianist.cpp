@@ -4,7 +4,7 @@ by playing notes through MIDI soft-synth to sound output.
 
 https://github.com/sunkware/resonat
 
-Copyright (c) 2024 Sunkware
+Copyright (c) 2024-2025 Sunkware
 
 https://sunkware.org
 
@@ -33,7 +33,6 @@ Pianist::Pianist(fluid_synth_t* synth, const vector<int>& sfids, int& new_channe
     this->last_pitch1 = -1;
     this->last_pitch2 = -1;
     this->last_pitch3 = -1;
-    this->scale = vector<int>{60, 62, 64, 65, 67, 69, 71, 72,   74, 76, 77, 79, 81, 83, 84}; // Major
 }
 
 tuple<uint8_t, uint8_t, uint8_t> Pianist::react(fluid_synth_t* synth, const vector<uint8_t>& spectrogram, size_t i_blk, const SpectrumStats& spectrum_stats) {

@@ -4,7 +4,7 @@ by playing notes through MIDI soft-synth to sound output.
 
 https://github.com/sunkware/resonat
 
-Copyright (c) 2024 Sunkware
+Copyright (c) 2024-2025 Sunkware
 
 https://sunkware.org
 
@@ -51,10 +51,10 @@ Ensemble::Ensemble() {
 
 	this->block1d = vector<double>(cfg::BLOCKSIZE);
 	this->spectrum = vector<double>(cfg::BLOCKSIZE);
-	this->sliding_averfade_spectrum = vector<double>(cfg::BANDWIDTH);
 
 	this->pos_blk = 0;
 
+	this->sliding_averfade_spectrum = vector<uint8_t>(cfg::BANDWIDTH);
 	this->spectrogram = vector<uint8_t>(cfg::WIDTH * cfg::BANDWIDTH * cfg::CHANNELS);
 
 	auto soundfonts_dirpath = getenv(SOUNDFONTS_DIRPATH_ENVAR_NAME);
@@ -81,7 +81,7 @@ void Ensemble::react_and_read(vector<uint8_t>& spectrogram, size_t i_blk, int16_
 	auto spc = this->sliding_averfade_spectrum.data();
 	auto spg = spectrogram.data() + i_blk * (cfg::BANDWIDTH * cfg::CHANNELS);
 	for (size_t i = 0; i < cfg::BANDWIDTH; i++) {	
-		*spc = cfg::AVERFADE_WEIGHT * (*spc) + cfg::COMPLEMENT_AVERFADE_WEIGHT * 0.5 * ((*spg) + (*(spg + 1)));
+		*spc = uint8_t(cfg::AVERFADE_WEIGHT * (*spc) + (1.0 - cfg::AVERFADE_WEIGHT) * 0.5 * ((*spg) + (*(spg + 1))));
 		
 		spectrum_stats.mean += *spc;
 		if (*spc > spectrum_stats.max) {

@@ -2,12 +2,13 @@
 #define _FLUTIST_HPP
 
 #include "player.hpp"
+#include "scales.hpp"
 
 class Flutist : public Player {
 
     int chan;
     int last_pitch;
-    vector<int> scale;
+    const vector<int>& scale = scales::MINOR_60_2;
 
 public:
 

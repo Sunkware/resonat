@@ -4,7 +4,7 @@ by playing notes through MIDI soft-synth to sound output.
 
 https://github.com/sunkware/resonat
 
-Copyright (c) 2024 Sunkware
+Copyright (c) 2024-2025 Sunkware
 
 https://sunkware.org
 
@@ -31,7 +31,6 @@ Singer::Singer(fluid_synth_t* synth, const vector<int>& sfids, int& new_channel)
     new_channel++;
     fluid_synth_program_select(synth, this->chan, sfids[SFIDS::LARGE], 0, GMSS::CHOIR_AAHS);
     this->last_pitch = -1;
-    this->scale = vector<int>{61, 62, 64, 65, 66,   73, 74, 76, 77, 78}; // Japanese pentatonic
 }
 
 tuple<uint8_t, uint8_t, uint8_t> Singer::react(fluid_synth_t* synth, const vector<uint8_t>& spectrogram, size_t i_blk, const SpectrumStats& spectrum_stats) {

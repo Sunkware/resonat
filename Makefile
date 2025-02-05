@@ -16,7 +16,7 @@ ensemble.o: ensemble.cpp ensemble.hpp config.hpp soundfonts.hpp spectrumstats.hp
 	rm -f $@
 	c++ $(CXXFLAGS) $< -c -o $@
 
-players/%.o: players/%.cpp players/%.hpp players/player.hpp players/gmtimbres.hpp config.hpp soundfonts.hpp spectrumstats.hpp
+players/%.o: players/%.cpp players/%.hpp players/player.hpp players/gmtimbres.hpp players/scales.hpp config.hpp soundfonts.hpp spectrumstats.hpp
 	rm -f $@
 	c++ $(CXXFLAGS) $< -c -o $@
 
@@ -24,6 +24,9 @@ clean:
 	rm -f players/*.o
 	rm -f *.o
 	rm -f resonat
+
+reset:
+	rm -rf _run_
 
 run:
 	./resonat

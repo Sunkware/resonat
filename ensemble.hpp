@@ -18,7 +18,6 @@ class Ensemble {
 	vector<unique_ptr<Player>> players;
 	vector<double> block1d; // to avoid allocations in callback
 	vector<double> spectrum; // to avoid allocations in callback
-	vector<double> sliding_averfade_spectrum;
 
 	template<class P>
 	void add_player();
@@ -26,6 +25,7 @@ class Ensemble {
 public:
 	
 	size_t pos_blk;
+	vector<uint8_t> sliding_averfade_spectrum;
 	vector<uint8_t> spectrogram;
 	vector<uint8_t> eventogram;
 

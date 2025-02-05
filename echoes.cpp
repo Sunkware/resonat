@@ -4,7 +4,7 @@ by playing notes through MIDI soft-synth to sound output.
 
 https://github.com/sunkware/resonat
 
-Copyright (c) 2024 Sunkware
+Copyright (c) 2024-2025 Sunkware
 
 https://sunkware.org
 
@@ -69,7 +69,7 @@ void Echoes::write(int16_t* input) {
 	auto dst = dst_start;
 	for (size_t i = 0; i < cfg::BLOCKSIZE; i++) {
 		for (size_t c = 0; c < cfg::CHANNELS; c++) {
-			(*dst) = int16_t(cfg::WEIGHT * (*input) + cfg::COMPLEMENT_WEIGHT * (*dst));
+			(*dst) = int16_t(cfg::WEIGHT * (*input) + (1.0 - cfg::WEIGHT) * (*dst));
 			dst++;
 			input++;
 		}			
